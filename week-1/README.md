@@ -1,12 +1,11 @@
 # Nädal 1: SQL Basics - UrbanStyle'i andmete uurimine
 
-<img width="500" height="200" alt="hd1" src="https://github.com/user-attachments/assets/b6a4724a-36f9-454a-a91c-c67a8b926939" />
-<img width="500" height="200" alt="hd2" src="https://github.com/user-attachments/assets/80d3c62d-e7b5-4935-bbd3-b4417b4af1fa" />
+<img width="483" height="400" alt="Screenshot 2026-10-07 at 01 01 34" src="https://github.com/user-attachments/assets/914a1fd6-478a-46ab-8ba5-8965d2263fa3" />
 
-## Mida ma tegin
-Uurisin Products tabelit SQL päringutega
+## Skoop:
+Products tabeli uurimine, dokumenteerimine ning kokkuvõte teistele meeskonna liikmetele
 
-## Products Tabel
+## Products Tabel:
 | Key           | Type    | Description                                        |
 | ------------- | ------- | -------------------------------------------------- |
 | product_id    | int     | Toote unikaalne ID vahemikus 1001-1350             |
@@ -19,7 +18,7 @@ Uurisin Products tabelit SQL päringutega
 | eco_certified | bool    | Kas toode on ökomärgisega                          |
 | created_at    | date    | Toote lisamise kuupäev kataloogi                   |
 
-## Päringud products tabeli uurimiseks
+## Päringud products tabeli uurimiseks:
 
 <table>
 <tr>
@@ -179,18 +178,12 @@ ORDER BY product_name, product_id;
 </tr>
 </table>
 
+<img width="1223" height="348" alt="Screenshot 2026-10-07 at 00 41 57" src="https://github.com/user-attachments/assets/4d70a569-96de-45c8-8889-244327fa3b94" />
 
 
-- Leidsin [peamine leid]
-- Osalesin meeskonna andmemaastiku koostamisel
 
-## Peamised õpid
-- [Õppetund 1]
-- [Õppetund 2]
+## Kokkuvõte:
+Uurisin urbanstyle toodete tabelit. Kokkuvõtvalt liiga palju tooteid ei olnud (362), mis omakorda jagunesid 5 kategooria vahel üpriski võrdselt (67-82 tooded ühes kategoorias). Tarnijaid omakorda oli nende toodete peale 15. Tootegruppide keskmine hinnaklass ei olnud väga madal kuid samas mitte ka kõrge nt. jalanõudel 214.10€. Võiks pakkuda mingil määral butiik tüüpi pood. Huvi pärast uurisin ka brutokasumi marginaale ja üle gruppide olid need väga sarnased ~33% üldise keskmise hinna järgi arvutades. Duplikaate tundus olevat 12 kirje jagu st. kattusid product_name, category, retail_price, mis annab üsa suure kindluse duplikaatide õigsuses. Üldiselt soovitaks tabelid korrastada duplikaatise osas, eco_certified veerus olid mõned NULL väärtused kuid hetkel seda liiga oluliseks ei pea kuna andmed võivadki lihtsalt tootja poolelt puudu olla.
 
-## Failid
-- `week1_[tabel]_exploration.sql` -- minu SQL päringud
-- `week1_results_screenshot.png` -- tulemuste pilt
-
-## Meeskonna töö
-- [Link meeskonna Data Landscape slaidile]
+## Meeskonna töö:
+Meeskonna andmemaastiku koostamise: [link](https://docs.google.com/presentation/d/1HGrAEDhiSVFO7SssiodFCCP5E2eAqCFLvKtMVqyCAdk/)
