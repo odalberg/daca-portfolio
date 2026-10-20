@@ -6,11 +6,11 @@
 ## Nädala kaupa
 | Nädal | Teema | Staatus |
 |-------|-------|---------|
-| 0 | Onboarding | Käimas |
-| 1 | SQL Basics | Tulemas |
-| 2 | SQL Cleaning | Tulemas |
-| 3 | SQL JOINs | Tulemas |
-| 4 | SQL Aggregation | Tulemas |
+| 0 | Onboarding | Tehtud |
+| 1 | SQL Basics | Tehtud |
+| 2 | SQL Cleaning | Tehtud |
+| 3 | SQL JOINs | Tehtud |
+| 4 | SQL Aggregation | Käimas |
 | 5-6 | Visualiseerimine | Tulemas |
 | 7-8 | Python | Tulemas |
 | 9-10 | Portfoolio + Karjäär | Tulemas |
