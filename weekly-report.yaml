@@ -1,0 +1,70 @@
+# Urbanstyle weekly report: runs week-8/pipeline.py and commits the new HTML.
+# Vercel redeploys automatically when the commit lands on main.
+#
+# Location: <repo root>/.github/workflows/weekly-report.yml  (NOT inside week-8/)
+# Required repo secrets (Settings → Secrets and variables → Actions):
+#   SUPABASE_URL, SUPABASE_KEY
+
+name: Weekly report
+
+on:
+  schedule:
+    # Every Monday 06:00 UTC (= 08:00 Tallinn in winter, 09:00 in summer)
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "Any day of the week to build, YYYY-MM-DD (empty = previous week)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write # needed to push the report commit
+
+concurrency:
+  group: weekly-report
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: week-8
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: week-8/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          WEEK: ${{ github.event.inputs.week }}
+        run: |
+          if [ -n "$WEEK" ]; then
+            python pipeline.py --week "$WEEK"
+          else
+            python pipeline.py
+          fi
+
+      - name: Commit and push report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          # Only the public HTML; raw CSVs stay out (output/csv/ is gitignored)
+          git add output/index.html output/html/
+          if git diff --cached --quiet; then
+            echo "No report changes, nothing to commit."
+          else
+            git commit -m "Weekly report $(date -u +%Y-%m-%d)"
+            git push
+          fi
