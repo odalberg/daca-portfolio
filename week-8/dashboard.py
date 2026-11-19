@@ -30,7 +30,7 @@ st.set_page_config(
 )
 
 st.title("🛍️ Urbanstyle müügikäive")
-st.caption("Päevane käive asukohtade lõikes")
+st.caption("Päevane käive asukohtade lõikes — andmed otse Supabase'ist")
 
 
 # ---------------------------------------------------------------------------
@@ -53,17 +53,15 @@ st.sidebar.header("Filtrid")
 default_start = date(2023, 12, 25)
 default_end = date(2023, 12, 31)
 
-prev_mon, prev_sun = previous_week_range()
-
 start_date = st.sidebar.date_input(
     "Alguskuupäev",
-    value=prev_mon,
-    help="Eelmine esmaspäev vaikimisi",
+    value=default_start,
+    help="Vaikimisi 2023 viimase nädala esmaspäev",
 )
 end_date = st.sidebar.date_input(
     "Lõppkuupäev",
-    value=prev_sun,
-    help="Eelmine pühapäev vaikimisi",
+    value=default_end,
+    help="Vaikimisi 2023 viimase nädala pühapäev",
 )
 
 selected_locations = st.sidebar.multiselect(
