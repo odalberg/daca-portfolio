@@ -49,6 +49,10 @@ def previous_week_range():
 # ---------------------------------------------------------------------------
 st.sidebar.header("Filtrid")
 
+# Default period: last week of 2023 (Mon 25.12 – Sun 31.12)
+default_start = date(2023, 12, 25)
+default_end = date(2023, 12, 31)
+
 prev_mon, prev_sun = previous_week_range()
 
 start_date = st.sidebar.date_input(
